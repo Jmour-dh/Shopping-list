@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Button,
+  FlatList,
+} from "react-native";
 
 export default function App() {
   const [product, setProduct] = useState("");
@@ -10,7 +17,11 @@ export default function App() {
   };
 
   const submitHandler = () => {
-    setMyProducts((currentMyProducts) => [...currentMyProducts, product]);
+    const idString = Date.now().toString();
+    setMyProducts((currentMyProducts) => [
+      { key: idString, name: product },
+      ...currentMyProducts,
+    ]);
     setProduct("");
   };
   return (
@@ -24,15 +35,10 @@ export default function App() {
         />
         <Button title="valider" onPress={submitHandler} />
       </View>
-      <View style={styles.items}>
-        {myProducts.map((product, index) => {
-          return (
-            <Text style={styles.element} key={index}>
-              {product}
-            </Text>
-          );
-        })}
-      </View>
+      <FlatList
+        data={myProducts}
+        renderItem={({ item }) => <Text style={styles.element}>{item.name}</Text>}
+      />
     </View>
   );
 }
@@ -44,6 +50,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     flexDirection: "row",
+    marginBottom: 15,
   },
   textInput: {
     borderColor: "gery",
