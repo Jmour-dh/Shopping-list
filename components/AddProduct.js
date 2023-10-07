@@ -4,9 +4,6 @@ import { StyleSheet, View, TextInput, Button } from "react-native";
 const AddProduct = ({ submitHandler }) => {
   const [product, setProduct] = useState("");
 
-
- 
-
   const inputHandler = (val) => {
     setProduct(val);
   };
@@ -23,14 +20,13 @@ const AddProduct = ({ submitHandler }) => {
         onChangeText={inputHandler}
         value={product}
       />
-      <Button title="valider" onPress={handleClick}  />
+      <Button title="valider" onPress={handleClick} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   inputContainer: {
-    flexDirection: "row",
     marginBottom: 15,
   },
   textInput: {
@@ -40,6 +36,7 @@ const styles = StyleSheet.create({
     paddingLeft: 9,
     fontSize: 18,
     flexGrow: 1,
+    marginBottom: 9,
   },
 });
 
