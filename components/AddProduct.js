@@ -23,16 +23,15 @@ const AddProduct = ({ submitHandler, displayModal, cancelNewproduct }) => {
           value={product}
         />
         <View style={styles.btnContainer}>
-          <ButtonComponent
-            onPressHandler={handleClick}
-            btnTitle="Valider"
-            style={styles.btnBlue}
-          />
+          <ButtonComponent onPressHandler={handleClick} style={styles.btnBlue}>
+            Valider
+          </ButtonComponent>
           <ButtonComponent
             onPressHandler={cancelNewproduct}
-            btnTitle="Annuler"
             style={styles.btnTomato}
-          />
+          >
+            Annuler
+          </ButtonComponent>
         </View>
       </View>
     </Modal>
@@ -59,14 +58,14 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   btnBlue: {
-    backgroundColor:"seagreen",
-    width:150,
-    borderRadius:6
+    backgroundColor: "seagreen",
+    width: 150,
+    borderRadius: 6,
   },
   btnTomato: {
-    backgroundColor:"tomato",
-    width:150,
-    borderRadius:6
+    backgroundColor: "tomato",
+    width: 150,
+    borderRadius: 6,
   },
 });
 

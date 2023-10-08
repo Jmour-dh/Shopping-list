@@ -13,6 +13,7 @@ import {
 import Products from "./components/Products";
 import AddProduct from "./components/AddProduct";
 import DismissKeyboard from "./components/DismissKeyboard";
+import ButtonComponent from "./components/ButtonComponent";
 
 export default function App() {
   const [myProducts, setMyProducts] = useState([]);
@@ -45,9 +46,11 @@ export default function App() {
 
   return (
     <DismissKeyboard>
-      <ImageBackground 
-      style={styles.container}
-      source={{uri:'https://cdn.pixabay.com/photo/2020/05/31/18/15/flowers-5243636_1280.png'}}
+      <ImageBackground
+        style={styles.container}
+        source={{
+          uri: "https://cdn.pixabay.com/photo/2020/05/31/18/15/flowers-5243636_1280.png",
+        }}
       >
         <Modal
           visible={showModal}
@@ -80,7 +83,12 @@ export default function App() {
             </View>
           </View>
         </Modal>
-        <Button title="Nouveau produit" onPress={() => setDisplayModal(true)} />
+        <ButtonComponent 
+        onPressHandler={() => setDisplayModal(true)}
+        style={styles.AddProductBtn}
+        >
+          Nouveau produit
+        </ButtonComponent>
         <AddProduct
           submitHandler={submitHandler}
           displayModal={displayModal}
@@ -162,4 +170,11 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
   },
+  AddProductBtn: {
+    backgroundColor:"darkred",
+    padding:20,
+    borderRadius:30,
+    borderWidth:3,
+    borderColor:"white",
+  }
 });
