@@ -6,6 +6,7 @@ import {
   Modal,
   Text,
   Pressable,
+  Button,
 } from "react-native";
 import Products from "./components/Products";
 import AddProduct from "./components/AddProduct";
@@ -14,8 +15,11 @@ import DismissKeyboard from "./components/DismissKeyboard";
 export default function App() {
   const [myProducts, setMyProducts] = useState([]);
   const [showModal, setShowLModal] = useState(false);
+  const [displayModal, setDisplayModal] = useState(false);
 
   const submitHandler = (product) => {
+    setDisplayModal(false);
+
     if (product.length > 1) {
       const idString = Date.now().toString();
       setMyProducts((currentMyProducts) => [
@@ -32,6 +36,10 @@ export default function App() {
       return currentMyProducts.filter((product) => product.key != key);
     });
   };
+
+  const cancelNewproduct=() => {
+    setDisplayModal(false);
+  }
 
   return (
     <DismissKeyboard>
@@ -63,7 +71,12 @@ export default function App() {
             </View>
           </View>
         </Modal>
-        <AddProduct submitHandler={submitHandler} />
+        <Button title="Nouveau produit" onPress={() => setDisplayModal(true)} />
+        <AddProduct 
+        submitHandler={submitHandler} 
+        displayModal={displayModal}
+        cancelNewproduct={cancelNewproduct}
+         />
         <FlatList
           data={myProducts}
           renderItem={({ item }) => (
@@ -83,7 +96,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 40,
     paddingTop: 60,
-    flex:1
+    flex: 1,
   },
   modalContainer: {
     flex: 1,
