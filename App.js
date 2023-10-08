@@ -10,7 +10,7 @@ import {
   ImageBackground,
 } from "react-native";
 
-// import * as Font from "expo-font";
+
 import AppLoading from "expo-app-loading";
 
 import { useFonts, Bangers_400Regular } from "@expo-google-fonts/bangers";
@@ -22,13 +22,6 @@ import DismissKeyboard from "./components/DismissKeyboard";
 import ButtonComponent from "./components/ButtonComponent";
 import Header from "./components/Header";
 
-// const fetchFonts = () => {
-//   return Font.loadAsync({
-//     "inter-bold": require("./assets/fonts/Inter-Bold.ttf"),
-//     "inter-regular": require("./assets/fonts/Inter-Regular.ttf"),
-//     "pacifico-regular": require("./assets/fonts/Pacifico-Regular.ttf"),
-//   });
-// };
 
 export default function App() {
   const [myProducts, setMyProducts] = useState([]);
@@ -203,7 +196,7 @@ const styles = StyleSheet.create({
     height: 100,
   },
   AddProductBtn: {
-    backgroundColor: Colors.danger,
+    backgroundColor: Colors.success,
     padding: 20,
     borderRadius: 30,
     borderWidth: 3,
