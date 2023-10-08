@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { StyleSheet, View, TextInput, Button, Modal } from "react-native";
+import React, {  useState } from "react";
+import { StyleSheet, View, TextInput, Modal } from "react-native";
 import ButtonComponent from "./ButtonComponent";
 
 const AddProduct = ({ submitHandler, displayModal, cancelNewproduct }) => {

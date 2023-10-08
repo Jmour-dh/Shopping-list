@@ -6,14 +6,15 @@ import {
   Modal,
   Text,
   Pressable,
-  Button,
   Image,
   ImageBackground,
 } from "react-native";
+
 import Products from "./components/Products";
 import AddProduct from "./components/AddProduct";
 import DismissKeyboard from "./components/DismissKeyboard";
 import ButtonComponent from "./components/ButtonComponent";
+import Header from "./components/Header";
 
 export default function App() {
   const [myProducts, setMyProducts] = useState([]);
@@ -47,63 +48,66 @@ export default function App() {
   return (
     <DismissKeyboard>
       <ImageBackground
-        style={styles.container}
+        style={styles.bgImage}
         source={{
           uri: "https://cdn.pixabay.com/photo/2020/05/31/18/15/flowers-5243636_1280.png",
         }}
       >
-        <Modal
-          visible={showModal}
-          onRequestClose={() => setShowLModal(false)}
-          animationType="slide"
-          transparent
-        >
-          <View style={styles.modalContainer}>
-            <View style={styles.modalContent}>
-              <View style={styles.modalHeader}>
-                <Text style={styles.modalHeaderText}>OUPS!</Text>
-              </View>
-              <View style={styles.modalBody}>
-                <Image
-                  source={require("./assets/red-check-128.png")}
-                  style={styles.redCheck128}
-                />
-                <Text style={styles.modalBodyText}>
-                  merci d'indiquer plus d'un seul caratère
-                </Text>
-              </View>
-              <View style={styles.modalFooter}>
-                <Pressable
-                  style={styles.pressableBtnModal}
-                  onPress={() => setShowLModal(false)}
-                >
-                  <Text style={styles.modalBtn}>OK</Text>
-                </Pressable>
+        <Header />
+        <View style={styles.container}>
+          <Modal
+            visible={showModal}
+            onRequestClose={() => setShowLModal(false)}
+            animationType="slide"
+            transparent
+          >
+            <View style={styles.modalContainer}>
+              <View style={styles.modalContent}>
+                <View style={styles.modalHeader}>
+                  <Text style={styles.modalHeaderText}>OUPS!</Text>
+                </View>
+                <View style={styles.modalBody}>
+                  <Image
+                    source={require("./assets/red-check-128.png")}
+                    style={styles.redCheck128}
+                  />
+                  <Text style={styles.modalBodyText}>
+                    merci d'indiquer plus d'un seul caratère
+                  </Text>
+                </View>
+                <View style={styles.modalFooter}>
+                  <Pressable
+                    style={styles.pressableBtnModal}
+                    onPress={() => setShowLModal(false)}
+                  >
+                    <Text style={styles.modalBtn}>OK</Text>
+                  </Pressable>
+                </View>
               </View>
             </View>
-          </View>
-        </Modal>
-        <ButtonComponent 
-        onPressHandler={() => setDisplayModal(true)}
-        style={styles.AddProductBtn}
-        >
-          Nouveau produit
-        </ButtonComponent>
-        <AddProduct
-          submitHandler={submitHandler}
-          displayModal={displayModal}
-          cancelNewproduct={cancelNewproduct}
-        />
-        <FlatList
-          data={myProducts}
-          renderItem={({ item }) => (
-            <Products
-              name={item.name}
-              idString={item.key}
-              deleteProduct={deleteProduct}
-            />
-          )}
-        />
+          </Modal>
+          <ButtonComponent
+            onPressHandler={() => setDisplayModal(true)}
+            style={styles.AddProductBtn}
+          >
+            Nouveau produit
+          </ButtonComponent>
+          <AddProduct
+            submitHandler={submitHandler}
+            displayModal={displayModal}
+            cancelNewproduct={cancelNewproduct}
+          />
+          <FlatList
+            data={myProducts}
+            renderItem={({ item }) => (
+              <Products
+                name={item.name}
+                idString={item.key}
+                deleteProduct={deleteProduct}
+              />
+            )}
+          />
+        </View>
       </ImageBackground>
     </DismissKeyboard>
   );
@@ -112,7 +116,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     padding: 40,
-    paddingTop: 60,
     flex: 1,
   },
   modalContainer: {
@@ -171,10 +174,14 @@ const styles = StyleSheet.create({
     height: 100,
   },
   AddProductBtn: {
-    backgroundColor:"darkred",
-    padding:20,
-    borderRadius:30,
-    borderWidth:3,
-    borderColor:"white",
-  }
+    backgroundColor: "darkred",
+    padding: 20,
+    borderRadius: 30,
+    borderWidth: 3,
+    borderColor: "white",
+    marginBottom:20
+  },
+  bgImage: {
+    flex: 1,
+  },
 });
