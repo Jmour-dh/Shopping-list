@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import Colors from '../constants/colors'
 
 const Header = () => {
   return (
@@ -13,7 +14,7 @@ export default Header
 
 const styles = StyleSheet.create({
   headerWrapper: {
-    backgroundColor:"darkred",
+    backgroundColor:Colors.danger,
     justifyContent:"center",
     alignItems: "center",
     minHeight:30,
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
     paddingBottom:15,
   },
   logo: {
-    color:"#ffffff",
+    color:Colors.white,
     fontSize:30,
     padding:9,
     fontWeight:"bold",

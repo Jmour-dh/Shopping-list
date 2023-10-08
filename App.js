@@ -10,6 +10,8 @@ import {
   ImageBackground,
 } from "react-native";
 
+import Colors from "./constants/colors"
+
 import Products from "./components/Products";
 import AddProduct from "./components/AddProduct";
 import DismissKeyboard from "./components/DismissKeyboard";
@@ -125,7 +127,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0,0.2) ",
   },
   modalContent: {
-    backgroundColor: "#fff",
+    backgroundColor: Colors.white,
     width: "90%",
     height: 300,
     borderRadius: 15,
@@ -138,10 +140,10 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
     borderBottomWidth: 1,
-    borderBottomColor: "ligthgray",
+    borderBottomColor: Colors.secondary,
   },
   modalHeaderText: {
-    color: "gray",
+    color: Colors.secondary,
     fontSize: 17,
   },
   modalBody: {
@@ -159,13 +161,13 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   pressableBtnModal: {
-    backgroundColor: "lightseagreen",
+    backgroundColor: Colors.info,
     borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,
   },
   modalBtn: {
     fontSize: 17,
-    color: "white",
+    color: Colors.white,
     textAlign: "center",
     padding: 16,
   },
@@ -174,11 +176,11 @@ const styles = StyleSheet.create({
     height: 100,
   },
   AddProductBtn: {
-    backgroundColor: "darkred",
+    backgroundColor: Colors.danger,
     padding: 20,
     borderRadius: 30,
     borderWidth: 3,
-    borderColor: "white",
+    borderColor: Colors.white,
     marginBottom:20
   },
   bgImage: {
