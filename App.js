@@ -7,6 +7,8 @@ import {
   Text,
   Pressable,
   Button,
+  Image,
+  ImageBackground,
 } from "react-native";
 import Products from "./components/Products";
 import AddProduct from "./components/AddProduct";
@@ -37,13 +39,16 @@ export default function App() {
     });
   };
 
-  const cancelNewproduct=() => {
+  const cancelNewproduct = () => {
     setDisplayModal(false);
-  }
+  };
 
   return (
     <DismissKeyboard>
-      <View style={styles.container}>
+      <ImageBackground 
+      style={styles.container}
+      source={{uri:'https://cdn.pixabay.com/photo/2020/05/31/18/15/flowers-5243636_1280.png'}}
+      >
         <Modal
           visible={showModal}
           onRequestClose={() => setShowLModal(false)}
@@ -56,6 +61,10 @@ export default function App() {
                 <Text style={styles.modalHeaderText}>OUPS!</Text>
               </View>
               <View style={styles.modalBody}>
+                <Image
+                  source={require("./assets/red-check-128.png")}
+                  style={styles.redCheck128}
+                />
                 <Text style={styles.modalBodyText}>
                   merci d'indiquer plus d'un seul caratère
                 </Text>
@@ -72,11 +81,11 @@ export default function App() {
           </View>
         </Modal>
         <Button title="Nouveau produit" onPress={() => setDisplayModal(true)} />
-        <AddProduct 
-        submitHandler={submitHandler} 
-        displayModal={displayModal}
-        cancelNewproduct={cancelNewproduct}
-         />
+        <AddProduct
+          submitHandler={submitHandler}
+          displayModal={displayModal}
+          cancelNewproduct={cancelNewproduct}
+        />
         <FlatList
           data={myProducts}
           renderItem={({ item }) => (
@@ -87,7 +96,7 @@ export default function App() {
             />
           )}
         />
-      </View>
+      </ImageBackground>
     </DismissKeyboard>
   );
 }
@@ -107,7 +116,7 @@ const styles = StyleSheet.create({
   modalContent: {
     backgroundColor: "#fff",
     width: "90%",
-    height: 250,
+    height: 300,
     borderRadius: 15,
     alignItems: "center",
   },
@@ -148,5 +157,9 @@ const styles = StyleSheet.create({
     color: "white",
     textAlign: "center",
     padding: 16,
+  },
+  redCheck128: {
+    width: 100,
+    height: 100,
   },
 });

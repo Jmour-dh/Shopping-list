@@ -3,10 +3,7 @@ import { StyleSheet, Text, View, Pressable } from "react-native";
 
 const Products = ({ name, deleteProduct, idString }) => {
   return (
-    <Pressable
-      onPress={() => deleteProduct(idString)}
-     
-    >
+    <Pressable onPress={() => deleteProduct(idString)}>
       <View style={styles.items}>
         <Text style={styles.element}>{name}</Text>
       </View>
@@ -19,7 +16,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   element: {
-    backgroundColor: "#ffb6c1",
+    backgroundColor: "mediumseagreen",
+    color: "#fff",
+    borderRadius: 6,
     padding: 20,
     fontSize: 17,
     marginVertical: 6,
