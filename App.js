@@ -10,18 +10,45 @@ import {
   ImageBackground,
 } from "react-native";
 
-import Colors from "./constants/colors"
+// import * as Font from "expo-font";
+import AppLoading from "expo-app-loading";
 
+import { useFonts, Bangers_400Regular } from "@expo-google-fonts/bangers";
+
+import Colors from "./constants/colors";
 import Products from "./components/Products";
 import AddProduct from "./components/AddProduct";
 import DismissKeyboard from "./components/DismissKeyboard";
 import ButtonComponent from "./components/ButtonComponent";
 import Header from "./components/Header";
 
+// const fetchFonts = () => {
+//   return Font.loadAsync({
+//     "inter-bold": require("./assets/fonts/Inter-Bold.ttf"),
+//     "inter-regular": require("./assets/fonts/Inter-Regular.ttf"),
+//     "pacifico-regular": require("./assets/fonts/Pacifico-Regular.ttf"),
+//   });
+// };
+
 export default function App() {
   const [myProducts, setMyProducts] = useState([]);
   const [showModal, setShowLModal] = useState(false);
   const [displayModal, setDisplayModal] = useState(false);
+
+  const [fontsLoaded, error] = useFonts({
+    BangersRegular: Bangers_400Regular,
+    "inter-bold": require("./assets/fonts/Inter-Bold.ttf"),
+    "inter-regular": require("./assets/fonts/Inter-Regular.ttf"),
+    "pacifico-regular": require("./assets/fonts/Pacifico-Regular.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return (
+      <AppLoading
+    
+      />
+    );
+  }
 
   const submitHandler = (product) => {
     setDisplayModal(false);
@@ -181,7 +208,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     borderWidth: 3,
     borderColor: Colors.white,
-    marginBottom:20
+    marginBottom: 20,
   },
   bgImage: {
     flex: 1,

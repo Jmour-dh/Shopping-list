@@ -7,7 +7,10 @@ const AddProduct = ({ submitHandler, displayModal, cancelNewproduct }) => {
   const [product, setProduct] = useState("");
 
   const inputHandler = (val) => {
-    setProduct(val);
+    // const regex = /[^a-z]/gi;
+    // setProduct(val.replace(regex, ""));
+    const regex = /[^0-9]/gi;
+    setProduct(val.replace(regex, ""));
   };
 
   const handleClick = () => {
@@ -17,11 +20,13 @@ const AddProduct = ({ submitHandler, displayModal, cancelNewproduct }) => {
   return (
     <Modal visible={displayModal} animationType="slide">
       <View style={styles.inputContainer}>
-        <Input 
-        style={styles.textInput} 
-        textPlaceholder="Nouveau produit"
-        onChangeHandler={inputHandler}
-        inputValue={product}
+        <Input
+          style={styles.textInput}
+          textPlaceholder="Nouveau produit"
+          onChangeHandler={inputHandler}
+          inputValue={product}
+          maxLength={10}
+          keyboardType="numeric"
         />
         <View style={styles.btnContainer}>
           <ButtonComponent onPressHandler={handleClick} style={styles.btnBlue}>
@@ -50,7 +55,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 19,
     marginBottom: 15,
-    borderRadius:30,
+    borderRadius: 30,
     height: 50,
   },
   btnContainer: {
